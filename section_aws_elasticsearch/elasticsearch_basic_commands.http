@@ -1,5 +1,5 @@
 # To load data into ES using PUT
-curl XPUT https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/cars/sedan/1 -d \
+curl XPUT <your es endpoint here>/cars/sedan/1 -d \
 '
 {
     "company":"AUDI",
@@ -11,50 +11,65 @@ curl XPUT https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazo
 ###
 
 # To load data using POST command
-curl XPOST https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/cars/sedan/2 -d \
+curl XPOST <your es endpoint here>/cars/sedan/2 -d \
 '
 {
     "company":"Toyota",
     "color":"Black",
     "year":"2019"
 }' \
--H Content-Type: application/json
+-H 'Content-Type: application/json'
 
 ###
 
 # To load data using POST command without ID
-curl XPOST https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/cars/sedan/ -d \
+curl XPOST <your es endpoint here>/cars/sedan/ -d \
 '
 {
     "company":"Honda",
     "color":"white",
     "year":"2020"
 }' \
--H Content-Type: application/json
+-H 'Content-Type: application/json'
 
 ###
 
+# To load data using POST command without ID
+curl XPOST <your es endpoint here>/cars/sedan/ -d \
+'
+{
+    "company":"Hyundai",
+    "color":"Grey",
+    "year":"2020"
+}' \
+-H 'Content-Type: application/json'
+
+###
 # To load data using BULK POST command
 
-curl -XPOST https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/_bulk \
+curl -XPOST <your es endpoint here>/_bulk \
 --data-binary @bulk_data.json -H 'Content-Type: application/json'
 ###
 
 
 
 # To look at all the Indexes
-curl -XGET 'https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/_cat/indices?v'
+curl -XGET '<your es endpoint here>/_cat/indices?v'
 
 # To look at all docs in the Indexes
-curl -XGET 'https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/cars/_search'
+curl -XGET '<your es endpoint here>/cars/_search'
 
 # To search the Index that you just created
-curl -XGET 'https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/cars/_search?q=h*&pretty=true'
+curl -XGET '<your es endpoint here>/cars/_search?q=h*&pretty=true'
 
 
 # To search using a json query
-curl -XGET --header 'Content-Type: application/json' https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/cars/_search -d '{
+curl -XGET --header 'Content-Type: application/json' <your es endpoint here>/cars/_search -d '{
       "query" : {
         "match" : { "company": "Audi" }
     }
 }'
+
+# To delete the Index on the ES cluster
+
+curl -X DELETE '<your es endpoint here>/cars_index'
