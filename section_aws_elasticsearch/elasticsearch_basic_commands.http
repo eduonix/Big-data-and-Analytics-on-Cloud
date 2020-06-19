@@ -1,0 +1,42 @@
+# To load data into ES using PUT
+PUT https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/cars/sedan/1
+Content-Type: application/json
+
+{
+    "company":"BMW",
+    "color":"blue",
+    "year":"2018"
+}
+
+<> 2020-06-19T074334.201.json
+###
+
+# To load data using POST command
+POST https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/cars/sedan/2
+Content-Type: application/json
+
+{
+    "company":"Toyota",
+    "color":"Black",
+    "year":"2019"
+}
+
+###
+
+# To load data using POST command without ID
+POST https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/cars/sedan/
+Content-Type: application/json
+
+{
+    "company":"Honda",
+    "color":"white",
+    "year":"2020"
+}
+
+###
+
+# To load data using BULK POST command
+POST https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/_bulk --data-binary @bulk_data.json
+Content-Type: application/json
+
+###

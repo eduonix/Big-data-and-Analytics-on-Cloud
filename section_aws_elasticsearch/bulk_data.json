@@ -1,0 +1,6 @@
+{ "create" : { "_index" : "cars", "_type" : "sedan", "_id" : "4" } }
+{ "company":"Mercedes", "color":"sliver", "year":"2017" }
+{ "create" : { "_index" : "cars", "_type" : "sedan", "_id" : "5" } }
+{ "company":"Volvo", "color":"Grey", "year":"2016" }
+{ "create" : { "_index" : "cars", "_type" : "sedan", "_id" : "6" } }
+{ "company":"Subaru", "color":"Blue", "year":"2015" }
