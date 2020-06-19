@@ -1,42 +1,60 @@
 # To load data into ES using PUT
-PUT https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/cars/sedan/1
-Content-Type: application/json
-
+curl XPUT https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/cars/sedan/1 -d \
+'
 {
-    "company":"BMW",
+    "company":"AUDI",
     "color":"blue",
     "year":"2018"
-}
+}' \
+-H 'Content-Type: application/json'
 
-<> 2020-06-19T074334.201.json
 ###
 
 # To load data using POST command
-POST https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/cars/sedan/2
-Content-Type: application/json
-
+curl XPOST https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/cars/sedan/2 -d \
+'
 {
     "company":"Toyota",
     "color":"Black",
     "year":"2019"
-}
+}' \
+-H Content-Type: application/json
 
 ###
 
 # To load data using POST command without ID
-POST https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/cars/sedan/
-Content-Type: application/json
-
+curl XPOST https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/cars/sedan/ -d \
+'
 {
     "company":"Honda",
     "color":"white",
     "year":"2020"
-}
+}' \
+-H Content-Type: application/json
 
 ###
 
 # To load data using BULK POST command
-POST https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/_bulk --data-binary @bulk_data.json
-Content-Type: application/json
 
+curl -XPOST https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/_bulk \
+--data-binary @bulk_data.json -H 'Content-Type: application/json'
 ###
+
+
+
+# To look at all the Indexes
+curl -XGET 'https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/_cat/indices?v'
+
+# To look at all docs in the Indexes
+curl -XGET 'https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/cars/_search'
+
+# To search the Index that you just created
+curl -XGET 'https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/cars/_search?q=h*&pretty=true'
+
+
+# To search using a json query
+curl -XGET --header 'Content-Type: application/json' https://search-krish-es2-ojotx42uk4vatnzpfl6paokajq.us-east-2.es.amazonaws.com/cars/_search -d '{
+      "query" : {
+        "match" : { "company": "Audi" }
+    }
+}'
