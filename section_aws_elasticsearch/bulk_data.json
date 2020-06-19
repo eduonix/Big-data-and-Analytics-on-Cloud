@@ -1,6 +1,7 @@
-{ "create" : { "_index" : "cars", "_type" : "sedan", "_id" : "4" } }
+{ "create" : { "_index" : "cars", "_type" : "sedan", "_id" : "7" } }
 { "company":"Mercedes", "color":"sliver", "year":"2017" }
-{ "create" : { "_index" : "cars", "_type" : "sedan", "_id" : "5" } }
+{ "create" : { "_index" : "cars", "_type" : "sedan", "_id" : "8" } }
 { "company":"Volvo", "color":"Grey", "year":"2016" }
-{ "create" : { "_index" : "cars", "_type" : "sedan", "_id" : "6" } }
+{ "create" : { "_index" : "cars", "_type" : "sedan", "_id" : "9" } }
 { "company":"Subaru", "color":"Blue", "year":"2015" }
+
