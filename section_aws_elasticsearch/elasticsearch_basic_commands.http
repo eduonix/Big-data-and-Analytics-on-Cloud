@@ -73,3 +73,10 @@ curl -XGET --header 'Content-Type: application/json' <your es endpoint here>/car
 # To delete the Index on the ES cluster
 
 curl -X DELETE '<your es endpoint here>/cars_index'
+
+# SQL Query to select data from AWS ES cluster which is one of it's feature we talked about
+
+curl XPOST <your es endpoint here>/_opendistro/_sql
+{
+  "query": "SELECT * FROM <my-index> LIMIT 10"
+}

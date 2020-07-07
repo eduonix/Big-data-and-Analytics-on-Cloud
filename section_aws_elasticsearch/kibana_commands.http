@@ -1,0 +1,44 @@
+# To Add data into ES cluster using PUT command
+
+PUT /cars/sedan/8
+{
+    "company":"Volvo",
+    "color":"blue",
+    "year":"2018"
+}
+
+
+# To add data using POST command on WebUI
+
+POST /cars/_bulk
+{
+    "company":"Tesla",
+    "color":"Mate Black",
+    "year":"2020"
+}
+
+# To list all the Indexs inside the cluster
+
+GET _cat/indices
+
+
+# To get about a particular index called cars
+
+GET cars
+
+
+# To search an Index with specific word or letter
+# In this case we are searching/querying the Index for letter "a"
+GET cars/_search?q=b*
+
+
+# To search Index on Kibana using a query
+
+GET cars/_search?
+{
+    "query": {
+        "match": {
+            "company": "Audi"
+        }
+    }
+}
