@@ -1,0 +1,35 @@
+AWS CLI Installation Link
+
+https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
+
+AWS CLI Commands:
+
+-- Put Records into a stream:
+
+aws kinesis put-record --stream-name krish-ds --partition-key "sedan" --data "{"type":"sedan", "company":"Mercedes", "color":"sliver", "year":"2017" }"
+
+aws kinesis put-record --stream-name krish-ds --partition-key "sedan" --data "{"type":"sedan", "company":"Volvo", "color":"grey", "year":"2016" }"
+
+aws kinesis put-record --stream-name krish-ds --partition-key "sedan" --data "{"type":"sedan", "company":"Subaru", "color":"Blue", "year":"2015" }"
+
+
+
+-- Reading from the stream:
+
+First we need to describe a stream to know how many shards we have:
+
+aws kinesis describe-stream --stream-name krish-ds
+
+
+Second get a shard iterator to consume data from any shard
+
+
+    TRIM_HORIZON: Points to the oldest record in the shard
+    LATEST: Reads the most recent data in the shard
+
+
+aws kinesis get-shard-iterator --stream-name krish-ds --shard-id shardId-000000000000 --shard-iterator-type TRIM_HORIZON
+
+Once you have the shardIterator use that to read the records
+
+aws kinesis get-records --shard-iterator
