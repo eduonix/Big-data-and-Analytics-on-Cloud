@@ -33,3 +33,26 @@ entry_date DATETIME
 )
 
 PARTITION BY entry_date ;
+
+
+-- BQ date partition example
+
+create table `kelangovan-test-project.krish_test.demo_table_part` (
+name string,
+st_number int64,
+st_name string,
+city string,
+country string,
+zip_code int64
+)
+partition by _PARTITIONDATE
+
+-- BQ partition by date column example
+
+create table `kelangovan-test-project.krish_test.demo_table_part2` (
+  center_name string,
+  visit_date date,
+  visiting_hour datetime,
+  doctors_name string)
+
+partition by visit_date;
