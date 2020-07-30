@@ -11,3 +11,6 @@ https://cloud.google.com/bigquery/pricing
 
 Please refer to https://cloud.google.com/bigquery/docs/reference/libraries#client-libraries-install-python
 
+### Kaggle datasets
+
+https://www.kaggle.com/datasets
